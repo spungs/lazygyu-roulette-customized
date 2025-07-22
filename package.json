@@ -8,6 +8,7 @@
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "gh-pages": "^6.3.0",
     "parcel": "^2.13.3",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "path-browserify": "^1.0.0",
@@ -20,7 +21,9 @@
   "scripts": {
     "lint": "eslint --fix src/**/*.ts",
     "dev": "parcel index.html --port 1235",
-    "build": "parcel build index.html --public-url /roulette/"
+    "build": "parcel build index.html --public-url /roulette/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "box2d-wasm": "^7.0.0"
