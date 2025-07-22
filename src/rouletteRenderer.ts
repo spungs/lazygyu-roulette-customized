@@ -91,13 +91,16 @@ export class RouletteRenderer {
 
   private async _load(): Promise<void> {
     // 배포 환경에서 올바른 경로 설정 - 환경에 따라 동적으로 결정
-    const isDev = window.location.hostname === 'localhost';
-    const basePath = isDev ? '/' : '/roulette/';
+    // const isDev = window.location.hostname === 'localhost';
+    // const basePath = isDev ? '/' : '/roulette/';
+    const basePath = '/';
     
     const loadPromises =
       [
-        { name: '챔루', imgUrl: `${basePath}assets/images/chamru.png` },
-        { name: '쿠빈', imgUrl: `${basePath}assets/images/kubin.png` },
+        // { name: '챔루', imgUrl: `${basePath}assets/images/chamru.png` },
+        // { name: '쿠빈', imgUrl: `${basePath}assets/images/kubin.png` },
+        { name: '챔루', imgUrl: `./assets/images/chamru.png` },
+        { name: '쿠빈', imgUrl: `./assets/images/kubin.png` },
       ].map(({ name, imgUrl }) => {
         return (async () => {
           this._images[name] = await this._loadImage(imgUrl);
