@@ -73,18 +73,26 @@ export class RouletteRenderer {
   }
 
   private async _loadImage(url: string): Promise<HTMLImageElement> {
-    return new Promise((rs) => {
+    return new Promise((rs, rj) => {
       const img = new Image();
       img.addEventListener('load', () => {
+        console.log('Image loaded successfully:', url);
+        rs(img);
+      });
+      img.addEventListener('error', (e) => {
+        console.error('Failed to load image:', url, e);
+        // 에러가 발생해도 빈 이미지로 계속 진행
         rs(img);
       });
       img.src = url;
+      console.log('Attempting to load image:', url);
     });
   }
 
   private async _load(): Promise<void> {
-    // 배포 환경에서 올바른 경로 설정
-    const basePath = window.location.pathname.includes('/roulette/') ? '/roulette/' : '/';
+    // 배포 환경에서 올바른 경로 설정 - 환경에 따라 동적으로 결정
+    const isDev = window.location.hostname === 'localhost';
+    const basePath = isDev ? '/' : '/roulette/';
     
     const loadPromises =
       [
