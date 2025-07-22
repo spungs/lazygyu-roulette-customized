@@ -22,6 +22,7 @@
     "lint": "eslint --fix src/**/*.ts",
     "dev": "parcel index.html --port 1235",
     "build": "parcel build index.html --public-url /roulette/",
+    "build:custom-domain": "parcel build index.html --public-url /",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

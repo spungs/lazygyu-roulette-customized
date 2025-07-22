@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: |
           npx update-browserslist-db@latest
-          npm run build
+          npm run build:custom-domain
           echo "roulette.spungs-teto-egen.com" > dist/CNAME
           
       - name: Setup Pages
