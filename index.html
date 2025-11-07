@@ -293,6 +293,29 @@
           text-align: center;
           font-size: 11px;
         }
+
+        &.language-selector {
+          .btn-lang {
+            width: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+              background: #aaa;
+            }
+
+            &.active {
+              background: #00baff;
+              font-weight: bold;
+            }
+
+            &.active:before {
+              content: '';
+              width: 0;
+              height: 0;
+            }
+          }
+        }
       }
     }
 
@@ -688,14 +711,24 @@
 
     document.querySelector('#btnShuffle').click();
 
-    const languageSelector = document.querySelector('#sltLanguage');
+    const languageButtons = document.querySelectorAll('.btn-lang');
     const currentLocale = window.getLocale();
-    if (currentLocale) {
-      languageSelector.value = currentLocale;
-    }
-    languageSelector.addEventListener('change', (e) => {
-      const newLocale = e.target.value;
-      window.setLocale(newLocale);
+
+    // Set active language button
+    languageButtons.forEach(btn => {
+      const lang = btn.getAttribute('data-lang');
+      if (lang === currentLocale) {
+        btn.classList.add('active');
+      }
+
+      btn.addEventListener('click', () => {
+        const selectedLang = btn.getAttribute('data-lang');
+        window.setLocale(selectedLang);
+
+        // Update active state
+        languageButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
     });
 
     const maps = window.roullete.getMaps();
@@ -781,10 +814,10 @@
       <label>
         <span data-trans>Language</span>
       </label>
-      <select id="sltLanguage">
-        <option value="en" data-trans>English</option>
-        <option value="ko" data-trans>Korean</option>
-      </select>
+      <div class="btn-group language-selector">
+        <button class="btn-lang" data-lang="en">🇬🇧 EN</button>
+        <button class="btn-lang" data-lang="ko">🇰🇷 KO</button>
+      </div>
     </div>
     <div class="row">
       <label>
@@ -845,14 +878,13 @@
   <button id="btnShake" data-trans>Shake!</button>
 </div>
 <div id="notice">
-  <h1>Notice</h1>
+  <h1 data-trans>Notice</h1>
   <div class="notice-body">
-    <p>이 프로그램은 무료이며 사용에 아무런 제한이 없습니다.</p>
-    <p>이 프로그램의 사용이나 프로그램을 이용한 영상 제작, 방송 등에 원작자는 아무런 제재를 가하거나 이의를 제기하지 않습니다. 자유롭게 사용하셔도 됩니다.</p>
-    <p>다만 저작권자를 사칭하는 것은 저작권법을 위반하는 범죄입니다.</p>
-    <p>저작권자를 사칭하여 권리 침해를 주장하는 경우를 보거나 겪으시는 분은 <a href="mailto:lazygyu+legal@gmail.com" target="_blank">lazygyu+legal@gmail.com</a>
-      으로 제보 부탁드립니다.</p>
-    <p>감사합니다.</p>
+    <p data-trans>This program is free and has no restrictions on use.</p>
+    <p data-trans>The original author does not impose any restrictions or raise objections to the use of this program or the creation of videos and broadcasts using it. Feel free to use it.</p>
+    <p data-trans>However, impersonating the copyright holder is a crime that violates copyright law.</p>
+    <p><span data-trans>If you see or experience someone impersonating the copyright holder to claim rights infringement, please report it to</span> <a href="mailto:lazygyu+legal@gmail.com" target="_blank">lazygyu+legal@gmail.com</a>.</p>
+    <p data-trans>Thank you.</p>
   </div>
   <div class="notice-action">
     <button id="closeNotice" data-trans>Close</button>
