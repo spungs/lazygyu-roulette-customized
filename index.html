@@ -46,7 +46,7 @@
       left: 50%;
       transform: translateX(-50%);
       color: white;
-      font-size: 12px;
+      font-size: 10px;
       z-index: 999;
       width: 90%;
       text-align: center;
@@ -58,13 +58,14 @@
 
     #settings {
       position: fixed;
-      bottom: 1rem;
-      left: 1rem;
+      bottom: 0.5rem;
+      left: 0.5rem;
       background: #666;
-      border-radius: 10px;
-      padding: 10px;
+      border-radius: 8px;
+      padding: 8px;
       z-index: 999;
-      min-width: 50%;
+      min-width: 40%;
+      font-size: 11px;
 
       display: flex;
       visibility: visible;
@@ -79,26 +80,28 @@
       h3 {
         padding: 0;
         margin: 0;
-        font-size: 12pt;
+        font-size: 10pt;
         color: #fefefe;
       }
 
       textarea {
         width: 100%;
-        min-height: 5rem;
+        min-height: 3.5rem;
         border: none;
         background: #999;
-        font-size: 14pt;
+        font-size: 11pt;
+        padding: 4px;
       }
 
       button {
         color: #fefefe;
         background: #222;
         border: none;
-        border-radius: 5px;
-        padding: 5px 10px;
+        border-radius: 4px;
+        padding: 4px 8px;
         position: relative;
         overflow: hidden;
+        font-size: 11px;
 
         &:active:after {
           content: '';
@@ -117,8 +120,8 @@
         mask-position: center center;
         mask-size: contain;
         display: inline-block;
-        width: 25px;
-        height: 25px;
+        width: 18px;
+        height: 18px;
         vertical-align: middle;
 
         &.play {
@@ -175,28 +178,32 @@
         div.row {
           display: flex;
           align-items: center;
-          height: 35px;
+          height: 28px;
+          margin-bottom: 2px;
 
           label {
-            width: 150px;
+            width: 120px;
             flex-grow: 0;
             flex-shrink: 0;
-            padding-left: 1rem;
+            padding-left: 0.5rem;
             color: white;
+            font-size: 11px;
           }
         }
       }
 
       select {
-        height: 25px;
+        height: 22px;
         width: 100%;
-        border-radius: 5px;
+        border-radius: 4px;
         background: #999;
+        font-size: 11px;
+        padding: 2px;
       }
 
       input[type=checkbox] {
         width: 0;
-        height: 25px;
+        height: 22px;
         position: relative;
         vertical-align: middle;
 
@@ -204,9 +211,9 @@
           position: absolute;
           content: '';
           display: inline-block;
-          width: 50px;
-          height: 25px;
-          border-radius: 25px;
+          width: 44px;
+          height: 22px;
+          border-radius: 22px;
           background: #999;
           top: 0;
           left: 0;
@@ -217,9 +224,9 @@
           top: 0;
           left: 0;
           content: '';
-          border-radius: 25px;
-          width: 25px;
-          height: 25px;
+          border-radius: 22px;
+          width: 22px;
+          height: 22px;
           background: #ccc;
           transition: transform .2s;
         }
@@ -244,30 +251,31 @@
           flex-grow: 0;
           flex-shrink: 0;
           overflow: hidden;
-          height: 25px;
+          height: 22px;
           width: 33%;
           border-radius: 0;
           background: #999;
           border: none;
           padding: 0;
           color: #fefefe;
+          font-size: 10px;
 
           display: flex;
           align-items: center;
           justify-content: center;
 
           &:first-child {
-            border-radius: 10px 0 0 10px;
+            border-radius: 8px 0 0 8px;
           }
 
           &:last-child {
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 8px 8px 0;
           }
 
           &.active:before {
             content: '';
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             display: inline-block;
             vertical-align: middle;
             mask-image: url('assets/images/check.svg');
@@ -283,6 +291,7 @@
         input[type=number] {
           box-sizing: border-box;
           text-align: center;
+          font-size: 11px;
         }
       }
     }
@@ -356,8 +365,8 @@
 
     #donate {
       position: fixed;
-      bottom: calc(160px + 1.5rem);
-      left: 1rem;
+      bottom: calc(120px + 1rem);
+      left: 0.5rem;
       z-index: 999;
       visibility: visible;
       opacity: 1;
@@ -367,45 +376,71 @@
         opacity: 0;
         visibility: hidden;
       }
+
+      img {
+        height: 32px !important;
+      }
+    }
+
+    #inGame {
+      button {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
     }
 
     @media screen and (max-width: 750px) {
       #donate {
-        bottom: 2rem;
+        bottom: 1.5rem;
+
+        img {
+          height: 28px !important;
+        }
       }
 
       #settings {
-        bottom: calc(2.5rem + 60px);
+        bottom: calc(2rem + 50px);
         display: block;
         min-width: 0;
         max-width: 100%;
-        width: calc(100% - 2rem);
+        width: calc(100% - 1rem);
         overflow: hidden;
         opacity: 1;
         visibility: visible;
         transition: visibility 0s, opacity 1s linear;
+        font-size: 10px;
 
         &.hide {
           opacity: 0;
           visibility: hidden;
         }
 
+        h3 {
+          font-size: 9pt;
+        }
+
+        textarea {
+          min-height: 3rem;
+          font-size: 10pt;
+        }
+
         div.right div.row {
           height: auto;
           display: block;
           border-bottom: 1px solid #555;
-          padding: .5rem 0;
+          padding: .4rem 0;
 
           label {
             width: 100%;
-            margin-bottom: .5rem;
+            margin-bottom: .4rem;
             padding-left: 0;
             display: block;
+            font-size: 10px;
           }
 
           .icon {
-            width: 15px;
-            height: 15px;
+            width: 14px;
+            height: 14px;
           }
         }
       }
@@ -427,6 +462,7 @@
         color: #333;
         display: none;
         flex-direction: column;
+        font-size: 11px;
 
         div.notice-body {
           flex-grow: 1;
@@ -652,6 +688,16 @@
 
     document.querySelector('#btnShuffle').click();
 
+    const languageSelector = document.querySelector('#sltLanguage');
+    const currentLocale = window.getLocale();
+    if (currentLocale) {
+      languageSelector.value = currentLocale;
+    }
+    languageSelector.addEventListener('change', (e) => {
+      const newLocale = e.target.value;
+      window.setLocale(newLocale);
+    });
+
     const maps = window.roullete.getMaps();
     const mapSelector = document.querySelector('#sltMap');
     maps.forEach((map) => {
@@ -731,6 +777,15 @@
 </script>
 <div id="settings" class="settings">
   <div class="right">
+    <div class="row">
+      <label>
+        <span data-trans>Language</span>
+      </label>
+      <select id="sltLanguage">
+        <option value="en" data-trans>English</option>
+        <option value="ko" data-trans>Korean</option>
+      </select>
+    </div>
     <div class="row">
       <label>
         <i class="icon map"></i>
