@@ -23,6 +23,12 @@ export const Translations = {
     'This program is freeware and may be used freely anywhere, including in broadcasts and videos.': 'This program is freeware and may be used freely anywhere, including in broadcasts and videos.',
     'Close': 'Close',
     'The result has been copied': 'The result has been copied',
+    Notice: 'Notice',
+    'This program is free and has no restrictions on use.': 'This program is free and has no restrictions on use.',
+    'The original author does not impose any restrictions or raise objections to the use of this program or the creation of videos and broadcasts using it. Feel free to use it.': 'The original author does not impose any restrictions or raise objections to the use of this program or the creation of videos and broadcasts using it. Feel free to use it.',
+    'However, impersonating the copyright holder is a crime that violates copyright law.': 'However, impersonating the copyright holder is a crime that violates copyright law.',
+    'If you see or experience someone impersonating the copyright holder to claim rights infringement, please report it to': 'If you see or experience someone impersonating the copyright holder to claim rights infringement, please report it to',
+    'Thank you.': 'Thank you.',
   },
   ko: {
     'Enter names below': '이름들을 입력하세요',
@@ -48,6 +54,12 @@ export const Translations = {
     'This program is freeware and may be used freely anywhere, including in broadcasts and videos.': '이 프로그램은 프리웨어이며 방송이나 영상 등을 포함한 어떤 용도로든 자유롭게 사용하는 것이 허용되어있습니다.',
     'Close': '닫기',
     'The result has been copied': '결과가 복사되었습니다',
+    Notice: '공지사항',
+    'This program is free and has no restrictions on use.': '이 프로그램은 무료이며 사용에 아무런 제한이 없습니다.',
+    'The original author does not impose any restrictions or raise objections to the use of this program or the creation of videos and broadcasts using it. Feel free to use it.': '이 프로그램의 사용이나 프로그램을 이용한 영상 제작, 방송 등에 원작자는 아무런 제재를 가하거나 이의를 제기하지 않습니다. 자유롭게 사용하셔도 됩니다.',
+    'However, impersonating the copyright holder is a crime that violates copyright law.': '다만 저작권자를 사칭하는 것은 저작권법을 위반하는 범죄입니다.',
+    'If you see or experience someone impersonating the copyright holder to claim rights infringement, please report it to': '저작권자를 사칭하여 권리 침해를 주장하는 경우를 보거나 겪으시는 분은',
+    'Thank you.': '감사합니다.',
   },
 } as const;
 
