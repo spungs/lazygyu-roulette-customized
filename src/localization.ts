@@ -17,12 +17,28 @@ function translateElement(element: Element) {
   const prop = element.getAttribute('data-trans');
 
   if (prop) {
-    const key = (element.getAttribute(prop) || '').trim();
+    // For attributes (like placeholder)
+    let key = element.getAttribute('data-trans-key');
+    if (!key) {
+      // First time: save original key
+      key = (element.getAttribute(prop) || '').trim();
+      if (key) {
+        element.setAttribute('data-trans-key', key);
+      }
+    }
     if (key && key in Translations[locale]) {
       element.setAttribute(prop, Translations[locale][key as TranslationKeys]);
     }
   } else {
-    const key = element.innerText.trim();
+    // For innerText
+    let key = element.getAttribute('data-trans-key');
+    if (!key) {
+      // First time: save original key
+      key = element.innerText.trim();
+      if (key) {
+        element.setAttribute('data-trans-key', key);
+      }
+    }
     if (key && key in Translations[locale]) {
       element.innerText = Translations[locale][key as TranslationKeys];
     }
