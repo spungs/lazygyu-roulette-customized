@@ -44,15 +44,33 @@ function setLocale(newLocale: string) {
     newLocaleLower in Translations
       ? (newLocaleLower as TranslatedLanguages)
       : defaultLocale;
+
+  // Save to localStorage
+  localStorage.setItem('mbr_locale', locale);
+
   translatePage();
+}
+
+function getLocale() {
+  return locale;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('localization loaded');
+
+  // Check if user has a saved locale preference
+  const savedLocale = localStorage.getItem('mbr_locale');
   const browserLocale = getBrowserLocale();
+
   console.log('detected locale: ', browserLocale);
-  setLocale(browserLocale);
+  console.log('saved locale: ', savedLocale);
+
+  setLocale(savedLocale || browserLocale);
 });
 
 // eslint-disable-next-line
 (window as any).translateElement = translateElement;
+// eslint-disable-next-line
+(window as any).setLocale = setLocale;
+// eslint-disable-next-line
+(window as any).getLocale = getLocale;
