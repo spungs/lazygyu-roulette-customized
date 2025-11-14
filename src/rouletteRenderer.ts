@@ -59,11 +59,18 @@ export class RouletteRenderer {
       const realSize = entries
         ? entries[0].contentRect
         : this._canvas.getBoundingClientRect();
-      const width = Math.max(realSize.width / 2, 640);
+      // Improved: Use higher resolution for better quality
+      // Changed from width/2 to width*1.5 for sharper rendering
+      const pixelRatio = window.devicePixelRatio || 1;
+      const width = Math.max(realSize.width * pixelRatio, 640);
       const height = (width / realSize.width) * realSize.height;
       this._canvas.width = width;
       this._canvas.height = height;
       this.sizeFactor = width / realSize.width;
+
+      // Enable image smoothing for better quality
+      this.ctx.imageSmoothingEnabled = true;
+      this.ctx.imageSmoothingQuality = 'high';
     };
 
     const resizeObserver = new ResizeObserver(resizing);

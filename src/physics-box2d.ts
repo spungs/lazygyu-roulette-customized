@@ -197,7 +197,9 @@ export class Box2dPhysics implements IPhysics {
     });
     this.deleteCandidates = [];
 
-    this.world.Step(deltaSeconds, 6, 2);
+    // Optimized: Reduced velocity iterations from 6 to 3 for better performance
+    // while maintaining acceptable physics accuracy
+    this.world.Step(deltaSeconds, 3, 2);
 
     for (let i = this.entities.length - 1; i >= 0; i--) {
       const entity = this.entities[i];
